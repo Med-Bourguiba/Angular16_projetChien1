@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <h2>Gestion des rôles d'utilisateur</h2>
+  <form>
+      <div class="form-group">
+          <label for="username">Nom d'utilisateur</label>
+          <input type="text" [(ngModel)]="User.username" name="id" class="form-control w-25" id="username">
+      </div>
+
+      <div class="form-group">
+          <label for="currentRole">Rôles actuels</label>
+          <ul class="list-group">
+              <li *ngFor="let r of User.roles" class="list-group-item">
+                  {{ r.role }}
+                  <button class="btn btn-danger float-right" (click)="removeRoleFromUsers(r.role_id)">Supprimer</button>
+              </li>
+          </ul>
+      </div>
+
+      <div class="form-group">
+          <label for="roleSelect">Sélectionnez un rôle </label>
+          <select [(ngModel)]="idOfRole" name="roleSelect" class="form-control">
+              <option *ngFor="let rr of roles" [ngValue]="rr">{{ rr.role }}</option>
+          </select>
+      </div>
+
+      <button class="btn btn-success" (click)="addRoleToUser()">Ajouter un rôle</button>
+  </form>
+</div>

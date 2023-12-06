@@ -1,0 +1,34 @@
+<div class="container">
+    <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+        <label>Nom Chien en tapant</label>
+        <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" >
+        </div>
+    </form>
+
+    
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id Chien</th>
+                        <th>Nom Chien</th>
+                        <th>Prix</th>
+                        <th>Date de naissance</th>
+                        <th>Race</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let chien of chiens  | searchFilter: searchTerm">
+                    <tr>
+                        <td>{{chien.idChien}}</td>
+                        <td>{{chien.nomChien}}</td>
+                        <td>{{chien.prixChien}}</td>
+                        <td>{{chien.datenaissance | date:'dd/MM/yyyy'}}</td>
+                        <td>{{chien.race?.nomRc}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

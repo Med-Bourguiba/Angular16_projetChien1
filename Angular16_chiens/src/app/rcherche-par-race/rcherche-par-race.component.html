@@ -1,0 +1,37 @@
+
+<div class="container">
+    <div class="col-sm-4 col-lg-4 mb-4">
+        <label>Race</label>
+        <select class="form-control form-control-lg" idS="idRc" [(ngModel)]="IdRace" (change)="onChange()">
+            <option *ngFor="let rc of races" value="{{rc.idRc}}">
+                {{rc.nomRc}}
+            </option>
+        </select>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id Chien</th>
+                        <th>Nom Chien</th>
+                        <th>Prix</th>
+                        <th>Date de naissance</th>
+                        <th>Race</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let chien of chiens">
+                    <tr>
+                        <td>{{chien.idChien}}</td>
+                        <td>{{chien.nomChien}}</td>
+                        <td>{{chien.prixChien}}</td>
+                        <td>{{chien.datenaissance | date:'dd/MM/yyyy'}}</td>
+                        <td>{{chien.race.nomRc}}</td>
+                        <td><a class="btn btn-danger" (click)="supprimerChien(chien)">Supprimer</a></td>
+                       <td><a class="btn btn-success" [routerLink]="['/updateChien',chien.idChien]">Modifier</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
